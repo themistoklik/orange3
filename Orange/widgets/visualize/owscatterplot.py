@@ -233,7 +233,8 @@ class OWScatterPlot(OWWidget):
                 self.sampling.setVisible(True)
                 if self.auto_sample:
                     self.__timer.start()
-
+        if data.has_missing() :
+            self.warning(1, "Dataset contains attributes with missing values!")
         if data is not None and (len(data) == 0 or len(data.domain) == 0):
             data = None
         if self.data and data and self.data.checksum() == data.checksum():
